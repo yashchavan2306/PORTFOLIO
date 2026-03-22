@@ -790,22 +790,7 @@ const style = `
   }
 `;
 
-const TerminalLine = ({ children, delay = 0, style: s = {} }) => (
-  <div style={{ opacity: 1, ...s }}>{children}</div>
-);
 
-const TypedText = ({ text, speed = 60 }) => {
-  const [displayed, setDisplayed] = useState("");
-  useEffect(() => {
-    let i = 0;
-    const interval = setInterval(() => {
-      if (i < text.length) { setDisplayed(text.slice(0, i + 1)); i++; }
-      else clearInterval(interval);
-    }, speed);
-    return () => clearInterval(interval);
-  }, [text, speed]);
-  return <span>{displayed}</span>;
-};
 
 const useFadeIn = () => {
   useEffect(() => {
@@ -1109,7 +1094,7 @@ export default function Portfolio() {
               <div className="project-tags">{p.tags.map(t => <span className="project-tag font-mono" key={t}>{t}</span>)}</div>
               <div className="project-name font-display">{p.name}</div>
               <div className="project-desc font-sans">{p.desc}</div>
-              <a href="#" className="project-link font-mono">View Project</a>
+              <button onClick={() => {}} className="project-link font-mono" style={{background:'none',border:'none',padding:0,cursor:'pointer',font:'inherit'}}>View Project</button>
             </div>
           ))}
         </div>
